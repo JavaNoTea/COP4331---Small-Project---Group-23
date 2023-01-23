@@ -1,0 +1,214 @@
+@font-face {
+    font-family: arcade;
+    src: url(../fonts/emulogic.ttf);
+}
+
+.loginpos{
+    transform: translate(25%, 0%);
+}
+
+body{
+  overflow: hidden;
+  background-color: black;
+}
+
+::placeholder{
+    color: #1838d8;
+  }
+
+.video-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#background-video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+.logo-container{
+    width: 100vw;
+}
+
+#demo-gods-logo{
+    display: block;
+    float:center;
+    width:40vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: arcade;
+    font-size: 22px;
+    color: #1838d8;
+    width: 40vw;
+    margin-top: 3vh;
+}
+
+#demo-gods-sublogo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-left: 8.7%;
+    padding-right: 8.7%;
+    text-align: center;
+    font-family: arcade;
+    font-size: 0.9vw;
+    color: #1838d8;
+}
+
+.everything-thats-not-the-background-container{
+    -webkit-transition: all 2s ease;  
+  -moz-transition: all 2s ease;  
+  -o-transition: all 2s ease;  
+  -ms-transition: all 2s ease;  
+  transition: all 2s ease; 
+    animation-fill-mode: forwards;
+    width: 400vw;
+    font-family: arcade;
+    font-size: 0.9vw;
+    color: #1838d8;
+}
+
+.register-page-column{
+    float: left;
+    width: 25%;
+}
+
+.login-page-column{
+    float: left;
+    width: 25%;
+}
+
+.contacts-page-column{
+    float: left;
+    width: 25%;
+}
+
+.details-page-column{
+    float: left;
+    width: 25%;
+}
+
+
+.login-labels{
+  padding-bottom: 3%;
+  width:100%;
+}
+
+.login-page-container{
+  padding-top: 7%;
+  width: 40%;
+  margin-left: 30%;
+}
+
+.register-page-container{
+    padding-top: 7%;
+    width: 40%;
+    margin-left: 60%;
+}
+
+.contacts-page-container{
+    padding-top: 7%;
+    width: 40%;
+    margin-left: 60%;
+}
+
+.details-page-container{
+    padding-top: 7%;
+    width: 40%;
+    margin-left: 60%;
+}
+
+.login-fields{
+    background-color: transparent;
+    border: 0px;
+    outline: none;
+    box-shadow: none;
+    float: right;
+    display:block;
+    cursor:default;
+    font-family: arcade;
+    font-size: 1.3vw;
+    width: 50%;
+    height: 100%;
+    color: #1838d8;
+}
+
+.login-button{
+  background-color: transparent;
+    border: 0px;
+    outline: none;
+    box-shadow: none;
+    cursor:default;
+    font-family: arcade;
+    font-size: 1.3vw;
+    margin-top: 0%;
+    height: 100%;
+    color: #1838d8;
+    display:inline-block;
+}
+
+.login-register-buttons-container{
+  padding-top: 3%;
+}
+
+.register-button-container{
+  width:49%;
+  float: right;
+}
+
+.login-button-container{
+  width:49%;
+  float: left;
+}
+
+#register-page-login-button{
+  text-align: left;
+  float: left;
+  display: block;
+  margin-right: 0;
+  padding-left: 0;
+  height: 100%;
+}
+
+#login-page-login-button{
+    text-align: left;
+    float: left;
+    display: block;
+    margin-right: 0;
+    padding-left: 0;
+  }
+  
+  #login-page-register-button{
+    text-align: right;
+    float:right;
+    display: block;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+#register-page-register-button{
+  text-align: right;
+  float:right;
+  display: block;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.register-page-container{
+  position:absolute;
+}
+
+    
