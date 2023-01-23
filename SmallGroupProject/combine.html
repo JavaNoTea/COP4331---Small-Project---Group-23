@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    -->
+    <link rel="stylesheet" href="CSS/combine.css">
+
+    <title>Demo Gods</title>
+</head>
+<body>
+    <!--BACKGROUND-->
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="images/grid.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!--LOGO-->
+    <div class="logo-container">
+        <img src="images/logo2.png" alt="Demo Gods Logo" id="demo-gods-logo">
+        <h1 id="demo-gods-sublogo">May they bless our demonstrations</h1>
+    </div>
+
+    <div class="everything-thats-not-the-background-container" id="everything-container">
+        <!--REGISTER PAGE-->
+        <div class="register-page-column">
+            <div class="login-page-container">
+                <form action="submit" method="GET">
+                    <div class="username-container">
+                        <h2 class="login-labels">Username: <input type="text" class="login-fields" placeholder="Demo_God"> </h2> 
+                    </div>
+                    <div class="password-container">
+                        <h2 class="login-labels">Password: <input type="password" class="login-fields" placeholder="password123"> </h2>
+                    </div>
+                    <div class="firstname-container">
+                        <h2 class="login-labels">First Name: <input type="text" class="login-fields" placeholder="Dennis"> </h2>
+                    </div>
+                    <div class="lastname-container">
+                        <h2 class="login-labels">Last Name: <input type="text" class="login-fields" placeholder="Ritchie"> </h2>
+                    </div>
+        
+                    <div class="login-register-buttons-container">
+                        <div class="login-button-container">
+                            <button class="login-button" id="register-page-cancel-button" type="button" onclick="move2login()">Cancel</button>
+                        </div>
+                        <div class="register-button-container">
+                            <button class="login-button" id="register-page-register-button" type="submit">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--LOGIN PAGE-->
+        <div class="login-page-column">
+            <div class="login-page-container">
+                <form action="/url" method="GET">
+                    <div class="username-container">
+                        <h2 class="login-labels">Username: <input type="text" class="login-fields" placeholder="Demo_God"> </h2> 
+                    </div>
+                    <div class="password-container">
+                        <h2 class="login-labels">Password: <input type="password" class="login-fields" placeholder="password123"> </h2>
+                    </div>
+        
+                    <div class="login-register-buttons-container">
+                        <div class="login-button-container">
+                            <button class="login-button" id="login-page-login-button">Login</button>
+                        </div>
+                        <div class="register-button-container">
+                            <button class="login-button" id="login-page-register-button" type="button" onclick="move2register()">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--CONTACTS PAGE-->
+        <div class="contacts-page-column">
+
+        </div>
+
+        <!--DETAILS PAGE-->
+        <div class="details-page-column">
+
+        </div>
+    </div>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>
