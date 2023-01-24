@@ -68,17 +68,14 @@ body{
     color: #1838d8;
 }
 
-.everything-thats-not-the-background-container{
-    -webkit-transition: all 2s ease;  
-  -moz-transition: all 2s ease;  
-  -o-transition: all 2s ease;  
-  -ms-transition: all 2s ease;  
+.everything-thats-not-the-background-container{  
   transition: all 2s ease; 
-    animation-fill-mode: forwards;
-    width: 400vw;
-    font-family: arcade;
-    font-size: 0.9vw;
-    color: #1838d8;
+  transform: translate(-25%);
+  animation-fill-mode: forwards;
+  width: 400vw;
+  font-family: arcade;
+  font-size: 0.9vw;
+  color: #1838d8;
 }
 
 .register-page-column{
