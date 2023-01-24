@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     -->
-    <link rel="stylesheet" href="CSS/combine.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
     <title>Demo Gods</title>
 </head>
@@ -59,10 +59,10 @@
             <div class="login-page-container">
                 <form action="/url" method="GET">
                     <div class="username-container">
-                        <h2 class="login-labels">Username: <input type="text" class="login-fields" placeholder="Demo_God"> </h2> 
+                        <h2 class="login-labels">Username: <input type="text" class="login-fields" placeholder="Demo_God" id="login-username"> </h2> 
                     </div>
                     <div class="password-container">
-                        <h2 class="login-labels">Password: <input type="password" class="login-fields" placeholder="password123"> </h2>
+                        <h2 class="login-labels">Password: <input type="password" class="login-fields" placeholder="password123" id="login-password"> </h2>
                     </div>
         
                     <div class="login-register-buttons-container">
@@ -73,18 +73,20 @@
                             <button class="login-button" id="login-page-register-button" type="button" onclick="move2register()">Register</button>
                         </div>
                     </div>
+
+                    <span id="login-result"></span>
                 </form>
             </div>
         </div>
 
         <!--CONTACTS PAGE-->
         <div class="contacts-page-column">
-
+            <span id="userName"></span>
         </div>
 
         <!--DETAILS PAGE-->
         <div class="details-page-column">
-
+            
         </div>
     </div>
 
