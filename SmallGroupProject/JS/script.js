@@ -14,8 +14,11 @@ function move2details(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
 }
 
+var form = document.getElementById("login");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
 
-const urlBase = '192.241.136.29'/*INSERT DATABASE URL*/;
+const urlBase = 'http://192.241.136.29/LAMPAPI'/*INSERT DATABASE URL*/;
 const extension = 'php';
 
 let userId = 0;
@@ -30,7 +33,7 @@ function doLogin()
 	
 	let login = document.getElementById("login-username").value;
 	let password = document.getElementById("login-password").value;
-	var hash = md5( password );
+	//var hash = md5( password );
 	
 	document.getElementById("login-result").innerHTML = "";
 
@@ -73,6 +76,14 @@ function doLogin()
 	}
 
 }
+
+
+
+function doSignup(){
+
+}
+
+
 
 function saveCookie()
 {
