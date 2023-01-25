@@ -15,7 +15,7 @@ function move2details(){
 }
 
 
-const urlBase = ''/*INSERT DATABASE URL*/;
+const urlBase = '192.241.136.29'/*INSERT DATABASE URL*/;
 const extension = 'php';
 
 let userId = 0;
