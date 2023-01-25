@@ -28,18 +28,18 @@
         <!--REGISTER PAGE-->
         <div class="register-page-column">
             <div class="login-page-container">
-                <form action="submit" method="GET">
+                <form onsubmit="doSignup()" id="register"  method="GET">
                     <div class="username-container">
-                        <h2 class="login-labels">Username: <input type="text" class="login-fields" placeholder="Demo_God"> </h2> 
+                        <h2 class="login-labels">Username: <input type="text" class="login-fields" id="register-username" placeholder="Demo_God"> </h2> 
                     </div>
                     <div class="password-container">
-                        <h2 class="login-labels">Password: <input type="password" class="login-fields" placeholder="password123"> </h2>
+                        <h2 class="login-labels">Password: <input type="password" class="login-fields" id="register-password" placeholder="password123"> </h2>
                     </div>
                     <div class="firstname-container">
-                        <h2 class="login-labels">First Name: <input type="text" class="login-fields" placeholder="Dennis"> </h2>
+                        <h2 class="login-labels">First Name: <input type="text" class="login-fields" id="firstName"placeholder="Dennis"> </h2>
                     </div>
                     <div class="lastname-container">
-                        <h2 class="login-labels">Last Name: <input type="text" class="login-fields" placeholder="Ritchie"> </h2>
+                        <h2 class="login-labels">Last Name: <input type="text" class="login-fields" id="lastName" placeholder="Ritchie"> </h2>
                     </div>
         
                     <div class="login-register-buttons-container">

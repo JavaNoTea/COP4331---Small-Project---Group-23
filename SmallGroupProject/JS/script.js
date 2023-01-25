@@ -14,7 +14,14 @@ function move2details(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
 }
 
+/*prevents website from refreshing when login is clicked*/
+
 var form = document.getElementById("login");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
+
+
+var form = document.getElementById("register");
 function handleForm(event) { event.preventDefault(); } 
 form.addEventListener('submit', handleForm);
 
@@ -37,7 +44,7 @@ function doLogin()
 	
 	document.getElementById("login-result").innerHTML = "";
 
-	let tmp = {login:login,password:password};
+	let tmp = {Login:login,Password:password};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -79,7 +86,68 @@ function doLogin()
 
 
 
-function doSignup(){
+function doSignup()
+{
+	console.log("asd");
+	firstName = "";
+	lastName = "";
+
+
+	firstName = document.getElementById("firstName").value;
+	lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("register-username").value;
+	let password = document.getElementById("register-password").value;
+
+
+
+
+	let tmp = {
+        FirstName: firstName,
+        LastName: lastName,
+        Login: login,
+        Password: password
+    };
+
+
+	let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/Register.' + extension;
+
+
+	let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+        xhr.onreadystatechange = function () {
+
+            if (this.readyState != 4) {
+                return;
+            }
+
+            if (this.status == 409) {
+                //document.getElementById("signupResult").innerHTML = "User already exists";
+                return;
+            }
+
+            if (this.status == 200) {
+
+                let jsonObject = JSON.parse(xhr.responseText);
+                userId = jsonObject.id;
+                //document.getElementById("signupResult").innerHTML = "User added";
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+                saveCookie();
+            }
+        };
+
+        xhr.send(jsonPayload);
+		
+    } catch (err) {
+		alert("asd");
+        document.getElementById("signupResult").innerHTML = err.message;
+    }
+
 
 }
 

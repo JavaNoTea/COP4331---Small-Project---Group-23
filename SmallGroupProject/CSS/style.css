@@ -157,6 +157,9 @@ body{
     display:inline-block;
 }
 
+.login-button:hover{
+  cursor: pointer;
+}
 .login-register-buttons-container{
   padding-top: 3%;
 }
@@ -207,5 +210,8 @@ body{
 .register-page-container{
   position:absolute;
 }
+
+
+
 
     
