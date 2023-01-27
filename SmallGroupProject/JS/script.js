@@ -1,15 +1,18 @@
+let contact = false;
 function move2register(){
     document.getElementById('everything-container').style.transform = "translate(0%)";
 }
 
 function move2login(){
     document.getElementById('everything-container').style.transform = "translate(-25%)";
+	contact = false;
 }
 
 function move2contacts(){
     document.getElementById('everything-container').style.transform = "translate(-50%)";
+	contact = true;
 }
-move2contacts()
+move2details()
 function move2details(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
 }
@@ -138,12 +141,13 @@ function doSignup()
                 firstName = jsonObject.firstName;
                 lastName = jsonObject.lastName;
                 saveCookie();
+				move2contacts()
             }
         };
 
         xhr.send(jsonPayload);
 
-		move2contacts()
+
 		
     } catch (err) {
 		alert("asd");
@@ -204,6 +208,43 @@ function doLogout()
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	move2login();
 }
+
+
+
+
+
+
+
+
+let prevNode = null;
+window.onclick = e => {
+	if(!contact) return
+
+    console.log(e.target.id)
+    console.log(prevNode)
+    if(e.target.id && e.target.id !== "demo-gods-logo" && e.target.id !== "userName"){
+       
+        let pDoc = document.getElementById(e.target.id);
+        
+        parentDiv = pDoc.parentNode;
+        parentDiv.classList.add("selected");
+
+        if(prevNode === parentDiv) return;
+        if(prevNode === null){
+            prevNode = parentDiv;
+        }
+        else{
+            prevNode.classList.remove("selected");
+            prevNode = parentDiv;
+        }
+        console.log("asdasd");
+    }
+} 
+
+
+
+
+
 
 
 /*

@@ -13,7 +13,7 @@ body{
 }
 
 ::placeholder{
-    color: #1838d8;
+    color: white;
   }
 
 .video-container{
@@ -50,7 +50,7 @@ body{
     text-align: center;
     font-family: arcade;
     font-size: 22px;
-    color: #1838d8;
+    color: white;
     width: 40vw;
     margin-top: 3vh;
 }
@@ -65,7 +65,7 @@ body{
     text-align: center;
     font-family: arcade;
     font-size: 0.9vw;
-    color: #1838d8;
+    color: white;
 }
 
 .everything-thats-not-the-background-container{  
@@ -75,7 +75,7 @@ body{
   width: 400vw;
   font-family: arcade;
   font-size: 0.9vw;
-  color: #1838d8;
+  color: white;
 }
 
 .register-page-column{
@@ -103,6 +103,13 @@ body{
 .login-labels{
   padding-bottom: 3%;
   width:100%;
+  font-size: 1.5em;
+}
+
+.edit-inp{
+  text-align: center;
+  background:none ;
+  border: none;
 }
 
 .login-page-container{
@@ -141,7 +148,7 @@ body{
     font-size: 1.3vw;
     width: 50%;
     height: 100%;
-    color: #1838d8;
+    color: white;
 }
 
 .login-button{
@@ -154,7 +161,7 @@ body{
     font-size: 1.3vw;
     margin-top: 0%;
     height: 100%;
-    color: #1838d8;
+    color: white;
     display:inline-block;
 }
 
@@ -226,11 +233,43 @@ body{
   margin-bottom: 1.8em;
 }
 
-
+input{
+  color: black;
+  height: 3em;
+}
 .viewer{
-  background: white;
-  margin-top: 10em;
+  background: #2525259c;
+  border: white solid 1px;
+  border-radius: 4px;
   height: 55vh;
+}
+.view-edit{
+  width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-submit-btn{
+  height: 3em;
+  width: 10em;
+  color: white;
+  background: none;
+  border: none;
+}
+
+.title{
+  margin-bottom: 3em;
+}
+
+
+.selected{
+  color: green;
+}
+
+.hover:hover{
+  color: green;
+  background: #0707079c;
+  cursor: pointer;
 }
 
 
@@ -242,9 +281,31 @@ body{
   text-align: left !important;
 }
 
+.text-right{
+  text-align: right !important;
+}
+
+.overflow{
+  overflow: hidden;
+}
+
+.sidebar-btns{
+  height: 100%;
+}
+
+.user-info{
+  padding-top: .4em;
+  padding-bottom: .4em;
+}
 
 
 
+
+.aved-btn{
+  background:none;
+  border: none;
+  color: white;
+}
 
 
     
