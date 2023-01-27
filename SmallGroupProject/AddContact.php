@@ -19,7 +19,11 @@
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
+
+        if ($conn->connect_error)
+        {
+            returnWithError("");
+        }
 	}
 
 	function getRequestInfo()
