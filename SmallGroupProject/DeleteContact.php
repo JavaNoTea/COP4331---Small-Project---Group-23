@@ -1,7 +1,7 @@
 <?php
 	$inData = getRequestInfo();
 	//------------------------//
-	$Name = $inData["Name"];
+	$ID = $inData["ID"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error)
@@ -10,14 +10,13 @@
 	}
 	else
 	{
-		// $stmt = $conn->prepare("INSERT into Contacts (Name,Phone,Email,UserID) VALUES(?,?,?,?)");
-		$stmt = $conn->prepare("DELETE FROM Contacts WHERE Name = ?");
-    $stmt->bind_param("s", $Name);
+		$stmt = $conn->prepare("DELETE FROM Contacts WHERE ID = ?");
+    $stmt->bind_param("i", $ID);
 		//-----------------------//
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		
+
 		if ($conn->connect_error)
 		{
 			returnWithError("");
