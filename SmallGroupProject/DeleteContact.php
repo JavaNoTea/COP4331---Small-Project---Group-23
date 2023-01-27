@@ -10,13 +10,18 @@
 	}
 	else
 	{
+		// $stmt = $conn->prepare("INSERT into Contacts (Name,Phone,Email,UserID) VALUES(?,?,?,?)");
 		$stmt = $conn->prepare("DELETE FROM Contacts WHERE Name = ?");
     $stmt->bind_param("s", $Name);
 		//-----------------------//
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
+		
+		if ($conn->connect_error)
+		{
+			returnWithError("");
+		}
 	}
 
 	function getRequestInfo()
