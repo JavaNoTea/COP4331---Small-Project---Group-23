@@ -91,6 +91,7 @@ body{
 .contacts-page-column{
     float: left;
     width: 25%;
+    
 }
 
 .details-page-column{
@@ -210,6 +211,38 @@ body{
 .register-page-container{
   position:absolute;
 }
+
+
+.contacts-container{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8vh;
+
+  height: 30em;
+  width: 70%;
+}
+
+.userName{
+  margin-bottom: 1.8em;
+}
+
+
+.viewer{
+  background: white;
+  margin-top: 10em;
+  height: 55vh;
+}
+
+
+.text-center-non{
+  text-align: center;
+}
+
+.text-left{
+  text-align: left !important;
+}
+
+
 
 
 

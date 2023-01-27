@@ -9,7 +9,7 @@ function move2login(){
 function move2contacts(){
     document.getElementById('everything-container').style.transform = "translate(-50%)";
 }
-
+move2contacts()
 function move2details(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
 }
@@ -142,6 +142,8 @@ function doSignup()
         };
 
         xhr.send(jsonPayload);
+
+		move2contacts()
 		
     } catch (err) {
 		alert("asd");
