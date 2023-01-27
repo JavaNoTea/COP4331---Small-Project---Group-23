@@ -25,7 +25,7 @@ var form = document.getElementById("register");
 function handleForm(event) { event.preventDefault(); } 
 form.addEventListener('submit', handleForm);
 
-const urlBase = 'http://192.241.136.29/LAMPAPI'/*INSERT DATABASE URL*/;
+const urlBase = 'http://cop4331.online/LAMPAPI'/*INSERT DATABASE URL*/;
 const extension = 'php';
 
 let userId = 0;
