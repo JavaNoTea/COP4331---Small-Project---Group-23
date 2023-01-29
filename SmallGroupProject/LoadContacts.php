@@ -24,7 +24,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '{"name":"' . $row["Name"] . '","phone":"' . $row["Name"] . '","email":"'. $row["Email"] . '","ID":"'. $row["ID"]  .'"}';
+			$searchResults .= '{"name":"' . $row["Name"] . '","phone":"' . $row["Phone"] . '","email":"'. $row["Email"] . '","ID":"'. $row["ID"]  .'"}';
 		}
 
 
