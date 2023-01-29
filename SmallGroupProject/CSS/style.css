@@ -241,6 +241,8 @@ input{
   background: #2525259c;
   border: white solid 1px;
   border-radius: 4px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 55vh;
 }
 .view-edit{
@@ -305,7 +307,21 @@ input{
   background:none;
   border: none;
   color: white;
+  line-height: 1px;
+  margin: 0;
+  height: 1.5em;
+  outline: none;
+  width: 8em;
+  padding: 0;
 }
 
+
+.add-name{
+  margin-right: 2em;
+}
+
+.pointer-hover:hover{
+  cursor: pointer;
+}
 
     

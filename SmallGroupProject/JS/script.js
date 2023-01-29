@@ -11,10 +11,11 @@ function move2login(){
 function move2contacts(){
     document.getElementById('everything-container').style.transform = "translate(-50%)";
 	contact = true;
+	loadContacts();
 }
-move2details()
 function move2details(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
+	contact = false;
 }
 
 /*prevents website from refreshing when login is clicked*/
@@ -62,19 +63,20 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
 		
-				if( userId < 1 )
+				if( jsonObject.error !== '')
 				{		
 					document.getElementById("login-result").innerHTML = "That user is not in the database. The demogods are displeased...";
 					return;
 				}
-		
+				console.log("ID ===== " + jsonObject.id);
+				userId = jsonObject.id;
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
+				console.log(jsonObject);
 
 				saveCookie();
-	
+				document.getElementById("name-display").innerHTML = firstName + " " + lastName;
 				move2contacts();
 			}
 		};
@@ -91,7 +93,6 @@ function doLogin()
 
 function doSignup()
 {
-	console.log("asd");
 	firstName = "";
 	lastName = "";
 
@@ -112,6 +113,7 @@ function doSignup()
     };
 
 
+
 	let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/Register.' + extension;
@@ -129,19 +131,12 @@ function doSignup()
             }
 
             if (this.status == 409) {
-                //document.getElementById("signupResult").innerHTML = "User already exists";
                 return;
             }
 
             if (this.status == 200) {
-
-                let jsonObject = JSON.parse(xhr.responseText);
-                userId = jsonObject.id;
-                //document.getElementById("signupResult").innerHTML = "User added";
-                firstName = jsonObject.firstName;
-                lastName = jsonObject.lastName;
                 saveCookie();
-				move2contacts()
+				move2login()
             }
         };
 
@@ -150,7 +145,6 @@ function doSignup()
 
 		
     } catch (err) {
-		alert("asd");
         document.getElementById("signupResult").innerHTML = err.message;
     }
 
@@ -172,7 +166,7 @@ function readCookie()
 	userId = -1;
 	let data = document.cookie;
 	let splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
+	for(let i = 0; i < splits.length; i++) 
 	{
 		let thisOne = splits[i].trim();
 		let tokens = thisOne.split("=");
@@ -193,6 +187,7 @@ function readCookie()
 	if( userId < 0 )
 	{
 		window.location.href = "index.html";
+		move2login();
 	}
 	else
 	{
@@ -211,6 +206,87 @@ function doLogout()
 
 
 
+function doAddContact(){
+	let newUser = {
+		Name: document.getElementById("newName").value,
+		Phone: document.getElementById("newPhone").value,
+		Email: document.getElementById("newEmail").value,
+		UserID: userId
+	}
+
+	console.log(newUser);
+
+	let jsonPayload = JSON.stringify(newUser);
+
+    let url = urlBase + '/AddContact.' + extension;
+
+
+	let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try{
+		xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Contact has been added");
+            }
+        };
+		xhr.send(jsonPayload);
+
+	}
+	catch(err){
+        console.log("err");
+	}
+	
+}
+
+
+function loadContacts(){
+	let tmp = {
+        search: "*",
+        UserID: userId
+    };
+
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/LoadContacts.' + extension;
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    console.log(jsonObject.error);
+                    return;
+                }
+				console.log(jsonObject);
+				const contactsDiv = document.getElementById("allContacts");
+				console.log(contactsDiv);
+				let html = "";
+				for(let i = 0; i < jsonObject.results.length; i++){
+					html += '<div class="row hover" value"' + jsonObject.results[i].ID +'">';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].name +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].phone +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].email +'</div> </div>';
+				}
+				contactsDiv.innerHTML = html;
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        console.log(err.message);
+    }
+}
+
+
+
+
+
+
+
 
 
 
@@ -219,9 +295,6 @@ function doLogout()
 let prevNode = null;
 window.onclick = e => {
 	if(!contact) return
-
-    console.log(e.target.id)
-    console.log(prevNode)
     if(e.target.id && e.target.id !== "demo-gods-logo" && e.target.id !== "userName"){
        
         let pDoc = document.getElementById(e.target.id);
@@ -237,7 +310,6 @@ window.onclick = e => {
             prevNode.classList.remove("selected");
             prevNode = parentDiv;
         }
-        console.log("asdasd");
     }
 } 
 

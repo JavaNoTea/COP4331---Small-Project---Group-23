@@ -83,33 +83,19 @@
         <div class="contacts-page-column">
             
             <div class="text-center-non contacts-container">
-                <p id="userName" class="text-center-non userName">Welcome: Adam</p>
+                <p id="userName" class="text-center-non userName">Welcome: <span id="name-display"></span></p>
                     <div class="viewer">
 
 
-                        <div class="row title">
-                            <div class="col-12">
-                                <div class="row mb-3 mt-1">
+                        <div class="row title"  style="overflow-y: scroll; overflow: hidden;">
+                            <div class="col-12" style="height: 100%;" >
+                                <div class="row mb-3 mt-1" >
                                     <div class="text-center col-3">Name</div>
                                     <div class="text-center col-3">Phone</div>
                                     <div class="text-center col-3">Email</div>
                                     <div class="text-center col-3">Date</div>
                                 </div>
-
-                                <div class="row hover" value="1">
-                                    <div class="text-center user-info col-3" id="1">adam</div>
-                                    <div class="text-center user-info col-3" id="1">Phone</div>
-                                    <div class="text-center user-info col-3" id="1">Email</div>
-                                    <div class="text-center user-info col-3" id="1">Date</div>
-                                </div>
-
-                                <div class="row hover mt-1" value="2">
-                                    <div class="text-center user-info col-3" id="2">emily</div>
-                                    <div class="text-center user-info col-3" id="2">Phone</div>
-                                    <div class="text-center user-info col-3" id="2">Email</div>
-                                    <div class="text-center user-info col-3" id="2">Date</div>
-                                </div>
-                                
+                                <div id="allContacts"></div>
                              </div>
                             
                             
@@ -118,10 +104,10 @@
 
                     </div>
                 <div class="row">
-                    <div class="col-8 text-left mt-3">
+                    <div onclick="doLogout()" class="col-7 text-left mt-3 pointer-hover">
                         Logout
                     </div>
-                    <div class="col-4 text-center mt-3">
+                    <div class="col-5 text-center mt-3">
                         <div class="d-flex justify-content-between">
                             <button class="aved-btn" onclick="move2details()">Add</button>
                             <div>view/Edit</div>
@@ -134,8 +120,28 @@
 
         <!--DETAILS PAGE-->
         <div class="details-page-column">
-            <form class="text-center viewer view-edit mt-5">
-                <button type="submit" class="add-submit-btn mt-2">done</button>
+            <form class="text-center viewer view-edit mt-5" id="info">
+                <p class="mt-2">add new user</p>
+                <div class="row mt-5">
+                    <p class="add-name col-6 text-right">Name:</p>
+                    <input id="newName"  type="text" class="aved-btn col-4" placeholder="Name">
+                </div>
+
+                <div class="row">
+                    <p class="add-name col-6 text-right">Phone:</p>
+                    <input id="newPhone"  type="text" class="aved-btn col-4" placeholder="Phone">
+                </div>
+
+                <div class="row">
+                    <p class="add-name col-6 text-right">Email:</p>
+                    <input id="newEmail"  type="text" class="aved-btn col-4" placeholder="Email">
+                </div>
+
+                <div class="row">
+                    <p class="add-name col-6 text-right">Date:</p>
+                    <input id="newDate"  type="text" class="aved-btn col-4" placeholder="Date">
+                </div>
+                <div type="submit" style="cursor: pointer;" class="mt-2" onclick="doAddContact()">done</div>
             </form>
             <div class="footer view-edit mt-2">
                 <div class="text-left" style="cursor: pointer;" onclick="move2contacts()">Back</div>
@@ -143,6 +149,6 @@
         </div>
     </div>
  <script src="JS/script.js"></script>
- <script src="JS/frontend.js"></script>
+
 </body>
 </html>
