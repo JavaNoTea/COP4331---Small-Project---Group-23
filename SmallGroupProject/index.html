@@ -104,16 +104,20 @@
 
                     </div>
                 <div class="row">
-                    <div onclick="doLogout()" class="col-7 text-left mt-3 pointer-hover">
-                        Logout
-                    </div>
-                    <div class="col-5 text-center mt-3">
-                        <div class="d-flex justify-content-between">
-                            <button class="aved-btn" onclick="move2details()">Add</button>
-                            <div>VIEW/EDIT</div>
-                            <div>DELETE</div>
+                        <div class="d-flex justify-content-between" style="margin-top: 0.5vw;">
+                            <div style="width:40%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="doLogout()" style="float:left; margin-left: 0vw!important;">LOGOUT</button>
+                            </div>
+                            <div style="width:20%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="move2add()" style="margin-left: 5vw!important;">ADD</button>
+                            </div>
+                            <div style="width:20%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="move2edit()" style="margin-left: 5vw!important;">VIEW/EDIT</button>
+                            </div>
+                            <div style="width:20%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="" style="margin-left: 5vw!important;">DELETE</button>
+                            </div>
                          </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -121,7 +125,7 @@
         <!--DETAILS PAGE-->
         <div class="details-page-column">
             <form class="text-center viewer view-edit mt-5" id="info">
-                <p class="mt-2">ADD NEW USER</p>
+                <p class="mt-2" id="form-label">ADD NEW USER</p>
                 <div class="row mt-5">
                     <p class="add-name col-6 text-right">NAME:</p>
                     <input id="newName"  type="text" class="aved-btn col-4" placeholder="John Smith">
@@ -141,10 +145,10 @@
                     <p class="add-name col-6 text-right">DATE:</p>
                     <input id="newDate"  type="text" class="aved-btn col-4" placeholder="01/01/2000">
                 </div>
-                <div type="submit" style="cursor: pointer;" class="mt-2" onclick="doAddContact()">DONE</div>
             </form>
             <div class="footer view-edit mt-2">
-                <div class="text-left" style="cursor: pointer;" onclick="move2contacts()">BACK</div>
+                <div class="text-left" style="cursor: pointer; width: 50%!important; display:inline;" onclick="move2contacts()">BACK</div>
+                <div type="submit" style="cursor: pointer; width: 50%!important; float:right;" class="text-right" onclick="doAddContact()">DONE</div>
             </div>
         </div>
     </div>

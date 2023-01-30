@@ -310,7 +310,6 @@ input{
   border: none;
   color: white;
   line-height: 1px;
-  margin: 0;
   height: 1.5em;
   outline: none;
   width: 8em;
@@ -319,7 +318,7 @@ input{
 
 
 .add-name{
-  margin-right: 2em;
+  margin-right: 2vw;
 }
 
 .pointer-hover:hover{
@@ -327,11 +326,11 @@ input{
 }
 
 .col-4 {
-  width: 70%;
+  width: 70%!important;
 }
 
 .col-6 {
-  width: 25%;
+  width: 25%!important;
 }
 
     

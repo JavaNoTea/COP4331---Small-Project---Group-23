@@ -13,8 +13,26 @@ function move2contacts(){
 	contact = true;
 	loadContacts();
 }
-function move2details(){
+function move2add(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
+	document.getElementById('form-label').innerHTML = "ADD NEW CONTACT";
+	contact = false;
+}
+
+function move2edit(){
+    document.getElementById('everything-container').style.transform = "translate(-75%)";
+	document.getElementById('form-label').innerHTML = "EDIT CONTACT";
+
+	conname = document.getElementById(idSelected + '-name').value;
+	conphone = document.getElementById(idSelected + '-phone').value;
+	conemail = document.getElementById(idSelected + '-email').value;
+	condate = document.getElementById(idSelected + '-date').value;
+
+	document.getElementById("newName").value = conname;
+	document.getElementById("newPhone").value = conphone;
+	document.getElementById("newEmail").value = conemail;
+	document.getElementById("newDate").value = condate;
+
 	contact = false;
 }
 
@@ -46,6 +64,11 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 let todaysDate = "";
+let idSelected = 0;
+
+function selectRow(ID){
+	idSelected = ID;
+}
 
 function doLogin()
 {
@@ -292,10 +315,10 @@ function loadContacts(){
 				console.log(contactsDiv);
 				let html = "";
 				for(let i = 0; i < jsonObject.results.length; i++){
-					html += '<div class="row hover" value"' + jsonObject.results[i].ID +'">';
-					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].name +'</div>';
-					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].phone +'</div>';
-					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].email +'</div> </div>';
+					html += '<div class="row hover" onClick="selectRow('+ jsonObject.results[i].ID +')" value="' + jsonObject.results[i].ID +'">';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-name">'+ jsonObject.results[i].name +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-phone">'+ jsonObject.results[i].phone +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-email">'+ jsonObject.results[i].email +'</div> </div>';
 				}
 				contactsDiv.innerHTML = html;
 
@@ -309,15 +332,6 @@ function loadContacts(){
         console.log(err.message);
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 
