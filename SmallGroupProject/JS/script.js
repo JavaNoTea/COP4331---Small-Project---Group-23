@@ -18,6 +18,16 @@ function move2details(){
 	contact = false;
 }
 
+function grabTodaysDate(){
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0');
+	var yyyy = today.getFullYear();
+
+	today = mm + '/' + dd + '/' + yyyy;
+	return today;
+}
+
 /*prevents website from refreshing when login is clicked*/
 
 var form = document.getElementById("login");
@@ -35,6 +45,7 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
+let todaysDate = "";
 
 function doLogin()
 {
@@ -287,6 +298,10 @@ function loadContacts(){
 					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].email +'</div> </div>';
 				}
 				contactsDiv.innerHTML = html;
+
+				/*Set todays date as a global variable and set any elements that rely on it*/
+				todaysDate = grabTodaysDate();
+				document.getElementById("newDate").value = todaysDate;
             }
         };
         xhr.send(jsonPayload);
