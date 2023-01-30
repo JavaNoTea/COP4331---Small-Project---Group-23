@@ -135,8 +135,14 @@ function doSignup()
             }
 
             if (this.status == 200) {
-                saveCookie();
-				move2login()
+				document.getElementById("firstName").value = "";
+				document.getElementById("lastName").value = "";
+				document.getElementById("register-username").value = "";
+				document.getElementById("register-password").value = "";
+                
+				saveCookie();
+				move2login();
+
             }
         };
 
@@ -201,6 +207,8 @@ function doLogout()
 	firstName = "";
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	document.getElementById("allContacts").innerHTML = "";
+
 	move2login();
 }
 
