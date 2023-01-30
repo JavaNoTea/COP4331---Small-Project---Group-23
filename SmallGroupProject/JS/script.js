@@ -13,9 +13,37 @@ function move2contacts(){
 	contact = true;
 	loadContacts();
 }
-function move2details(){
+function move2add(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
+	document.getElementById('form-label').innerHTML = "ADD NEW CONTACT";
 	contact = false;
+}
+
+function move2edit(){
+    document.getElementById('everything-container').style.transform = "translate(-75%)";
+	document.getElementById('form-label').innerHTML = "EDIT CONTACT";
+
+	conname = document.getElementById(idSelected + '-name').value;
+	conphone = document.getElementById(idSelected + '-phone').value;
+	conemail = document.getElementById(idSelected + '-email').value;
+	condate = document.getElementById(idSelected + '-date').value;
+
+	document.getElementById("newName").value = conname;
+	document.getElementById("newPhone").value = conphone;
+	document.getElementById("newEmail").value = conemail;
+	document.getElementById("newDate").value = condate;
+
+	contact = false;
+}
+
+function grabTodaysDate(){
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0');
+	var yyyy = today.getFullYear();
+
+	today = mm + '/' + dd + '/' + yyyy;
+	return today;
 }
 
 /*prevents website from refreshing when login is clicked*/
@@ -35,6 +63,12 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
+let todaysDate = "";
+let idSelected = 0;
+
+function selectRow(ID){
+	idSelected = ID;
+}
 
 function doLogin()
 {
@@ -135,8 +169,14 @@ function doSignup()
             }
 
             if (this.status == 200) {
-                saveCookie();
-				move2login()
+				document.getElementById("firstName").value = "";
+				document.getElementById("lastName").value = "";
+				document.getElementById("register-username").value = "";
+				document.getElementById("register-password").value = "";
+                
+				saveCookie();
+				move2login();
+
             }
         };
 
@@ -201,6 +241,8 @@ function doLogout()
 	firstName = "";
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	document.getElementById("allContacts").innerHTML = "";
+
 	move2login();
 }
 
@@ -229,6 +271,12 @@ function doAddContact(){
 		xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been added");
+				
+				document.getElementById("newName").value = "";
+				document.getElementById("newPhone").value = "";
+				document.getElementById("newEmail").value = "";
+				document.getElementById("newDate").value = "";
+				move2contacts();
             }
         };
 		xhr.send(jsonPayload);
@@ -267,12 +315,16 @@ function loadContacts(){
 				console.log(contactsDiv);
 				let html = "";
 				for(let i = 0; i < jsonObject.results.length; i++){
-					html += '<div class="row hover" value"' + jsonObject.results[i].ID +'">';
-					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].name +'</div>';
-					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].phone +'</div>';
-					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '">'+ jsonObject.results[i].email +'</div> </div>';
+					html += '<div class="row hover" onClick="selectRow('+ jsonObject.results[i].ID +')" value="' + jsonObject.results[i].ID +'">';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-name">'+ jsonObject.results[i].name +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-phone">'+ jsonObject.results[i].phone +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-email">'+ jsonObject.results[i].email +'</div> </div>';
 				}
 				contactsDiv.innerHTML = html;
+
+				/*Set todays date as a global variable and set any elements that rely on it*/
+				todaysDate = grabTodaysDate();
+				document.getElementById("newDate").value = todaysDate;
             }
         };
         xhr.send(jsonPayload);
@@ -280,15 +332,6 @@ function loadContacts(){
         console.log(err.message);
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 
