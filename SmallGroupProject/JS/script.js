@@ -229,6 +229,12 @@ function doAddContact(){
 		xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been added");
+				
+				document.getElementById("newName").value = "";
+				document.getElementById("newPhone").value = "";
+				document.getElementById("newEmail").value = "";
+				document.getElementById("newDate").value = "";
+				move2contacts();
             }
         };
 		xhr.send(jsonPayload);
