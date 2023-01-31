@@ -21,7 +21,7 @@
     <!--LOGO-->
     <div class="logo-container">
         <img src="images/logo2.png" alt="Demo Gods Logo" id="demo-gods-logo">
-        <h1 id="demo-gods-sublogo">MAY THEY BLESS OUR DEMONSTRATIONS</h1>
+        <h1 id="demo-gods-sublogo">May they bless our demonstrations</h1>
     </div>
 
     <div class="everything-thats-not-the-background-container" id="everything-container">
@@ -30,24 +30,24 @@
             <div class="login-page-container">
                 <form onsubmit="doSignup()" id="register"  method="GET">
                     <div class="username-container">
-                        <h2 class="login-labels">USERNAME: <input type="text" class="login-fields" id="register-username" placeholder="Demo_God"> </h2> 
+                        <h2 class="login-labels">Username: <input type="text" class="login-fields" id="register-username" placeholder="Demo_God"> </h2> 
                     </div>
                     <div class="password-container">
-                        <h2 class="login-labels">PASSWORD: <input type="password" class="login-fields" id="register-password" placeholder="Password123"> </h2>
+                        <h2 class="login-labels">Password: <input type="password" class="login-fields" id="register-password" placeholder="password123"> </h2>
                     </div>
                     <div class="firstname-container">
-                        <h2 class="login-labels">FIRST NAME: <input type="text" class="login-fields" id="firstName"placeholder="Dennis"> </h2>
+                        <h2 class="login-labels">First Name: <input type="text" class="login-fields" id="firstName"placeholder="Dennis"> </h2>
                     </div>
                     <div class="lastname-container">
-                        <h2 class="login-labels">LAST NAME: <input type="text" class="login-fields" id="lastName" placeholder="Ritchie"> </h2>
+                        <h2 class="login-labels">Last Name: <input type="text" class="login-fields" id="lastName" placeholder="Ritchie"> </h2>
                     </div>
         
                     <div class="login-register-buttons-container">
                         <div class="login-button-container">
-                            <button class="login-button" id="register-page-cancel-button" type="button" onclick="move2login()">CANCEL</button>
+                            <button class="login-button" id="register-page-cancel-button" type="button" onclick="move2login()">Cancel</button>
                         </div>
                         <div class="register-button-container">
-                            <button class="login-button" id="register-page-register-button" type="submit">REGISTER</button>
+                            <button class="login-button" id="register-page-register-button" type="submit">Register</button>
                         </div>
                     </div>
                 </form>
@@ -59,18 +59,18 @@
             <div class="login-page-container">
                 <form onsubmit="doLogin()" id="login" method="GET">
                     <div class="username-container">
-                        <h2 class="login-labels">USERNAME: <input type="text" class="login-fields" placeholder="Demo_God" id="login-username"> </h2> 
+                        <h2 class="login-labels">Username: <input type="text" class="login-fields" placeholder="Demo_God" id="login-username"> </h2> 
                     </div>
                     <div class="password-container">
-                        <h2 class="login-labels">PASSWORD: <input type="password" class="login-fields" placeholder="Password123" id="login-password"> </h2>
+                        <h2 class="login-labels">Password: <input type="password" class="login-fields" placeholder="password123" id="login-password"> </h2>
                     </div>
         
                     <div class="login-register-buttons-container">
                         <div class="login-button-container">
-                            <button class="login-button" id="login-page-login-button">LOGIN</button>
+                            <button class="login-button" id="login-page-login-button">Login</button>
                         </div>
                         <div class="register-button-container">
-                            <button class="login-button" id="login-page-register-button" type="button" onclick="move2register()">REGISTER</button>
+                            <button class="login-button" id="login-page-register-button" type="button" onclick="move2register()">Register</button>
                         </div>
                     </div>
 
@@ -83,17 +83,27 @@
         <div class="contacts-page-column">
             
             <div class="text-center-non contacts-container">
-                <p id="userName" class="text-center-non userName">WELCOME: <span id="name-display"></span></p>
+                <div class="d-flex justify-content-between">
+                    <p id="userName" class="text-left userName">Welcome: <span id="name-display"></span></p>
+                    <div class="d-flex mr-2">
+                        <p>Search by name:</p>
+                        <form onsubmit="searchContact()"  id="search">
+                            <input class="aved-btn" type="text" id="search-value" placeholder="Search">
+                        </form>
+
+                    </div>
+                    
+                </div>
                     <div class="viewer">
 
 
                         <div class="row title"  style="overflow-y: scroll; overflow: hidden;">
                             <div class="col-12" style="height: 100%;" >
                                 <div class="row mb-3 mt-1" >
-                                    <div class="text-center col-3">NAME</div>
-                                    <div class="text-center col-3">PHONE</div>
-                                    <div class="text-center col-3">EMAIL</div>
-                                    <div class="text-center col-3">DATE</div>
+                                    <div class="text-center col-3">Name</div>
+                                    <div class="text-center col-3">Phone</div>
+                                    <div class="text-center col-3">Email</div>
+                                    <div class="text-center col-3">Date</div>
                                 </div>
                                 <div id="allContacts"></div>
                              </div>
@@ -104,20 +114,16 @@
 
                     </div>
                 <div class="row">
-                        <div class="d-flex justify-content-between" style="margin-top: 0.5vw;">
-                            <div style="width:40%">
-                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="doLogout()" style="float:left; margin-left: 0vw!important;">LOGOUT</button>
-                            </div>
-                            <div style="width:20%">
-                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="move2add()" style="margin-left: 5vw!important;">ADD</button>
-                            </div>
-                            <div style="width:20%">
-                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="move2edit()" style="margin-left: 5vw!important;">VIEW/EDIT</button>
-                            </div>
-                            <div style="width:20%">
-                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="" style="margin-left: 5vw!important;">DELETE</button>
-                            </div>
+                    <div onclick="doLogout()" class="col-7 text-left mt-3 pointer-hover">
+                        Logout
+                    </div>
+                    <div class="col-5 text-center mt-3">
+                        <div class="d-flex justify-content-between">
+                            <button class="aved-btn" onclick="move2details()">Add</button>
+                            <div>view/Edit</div>
+                            <div>Delete</div>
                          </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,30 +131,30 @@
         <!--DETAILS PAGE-->
         <div class="details-page-column">
             <form class="text-center viewer view-edit mt-5" id="info">
-                <p class="mt-2" id="form-label">ADD NEW USER</p>
+                <p class="mt-2">add new user</p>
                 <div class="row mt-5">
-                    <p class="add-name col-6 text-right">NAME:</p>
-                    <input id="newName"  type="text" class="aved-btn col-4" placeholder="John Smith">
+                    <p class="add-name col-6 text-right">Name:</p>
+                    <input id="newName"  type="text" class="aved-btn col-4" placeholder="Name">
                 </div>
 
                 <div class="row">
-                    <p class="add-name col-6 text-right">PHONE:</p>
-                    <input id="newPhone"  type="text" class="aved-btn col-4" placeholder="123-456-7890">
+                    <p class="add-name col-6 text-right">Phone:</p>
+                    <input id="newPhone"  type="text" class="aved-btn col-4" placeholder="Phone">
                 </div>
 
                 <div class="row">
-                    <p class="add-name col-6 text-right">EMAIL:</p>
-                    <input id="newEmail"  type="text" class="aved-btn col-4" placeholder="JohnSmith@AOL.com">
+                    <p class="add-name col-6 text-right">Email:</p>
+                    <input id="newEmail"  type="text" class="aved-btn col-4" placeholder="Email">
                 </div>
 
                 <div class="row">
-                    <p class="add-name col-6 text-right">DATE:</p>
-                    <input id="newDate"  type="text" class="aved-btn col-4" placeholder="01/01/2000">
+                    <p class="add-name col-6 text-right">Date:</p>
+                    <input id="newDate"  type="text" class="aved-btn col-4" placeholder="Date">
                 </div>
+                <div type="submit" style="cursor: pointer;" class="mt-2" onclick="doAddContact()">done</div>
             </form>
             <div class="footer view-edit mt-2">
-                <div class="text-left" style="cursor: pointer; width: 50%!important; display:inline;" onclick="move2contacts()">BACK</div>
-                <div type="submit" style="cursor: pointer; width: 50%!important; float:right;" class="text-right" onclick="doAddContact()">DONE</div>
+                <div class="text-left" style="cursor: pointer;" onclick="move2contacts()">Back</div>
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@
 			}
 			$searchCount++;
 			//$searchResults .= '"' . $row['firstName"] . '"';
-			$searchResults .= '{"Name" : "' . $row['Name']. '", "Phone" : "' . $row['Phone']. '", "Email" : "' . $row['Email']. '"}';
+			$searchResults .= '{"name":"' . $row["Name"] . '","phone":"' . $row["Phone"] . '","email":"'. $row["Email"] . '","ID":"'. $row["ID"]  .'"}';
 			// , "lastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '
 		}
 		

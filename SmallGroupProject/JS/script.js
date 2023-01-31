@@ -52,6 +52,10 @@ var form = document.getElementById("login");
 function handleForm(event) { event.preventDefault(); } 
 form.addEventListener('submit', handleForm);
 
+var form = document.getElementById("search");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
+
 
 var form = document.getElementById("register");
 function handleForm(event) { event.preventDefault(); } 
@@ -335,6 +339,58 @@ function loadContacts(){
 
 
 
+function searchContact(){
+
+	if(document.getElementById("search-value").value === ""){
+		loadContacts();
+		return;
+	}
+
+	let tmp = {
+        search: document.getElementById("search-value").value,
+        UserID: userId
+    };
+
+	console.log("this///")
+	console.log(tmp)
+
+    let jsonPayload = JSON.stringify(tmp);
+
+	let url = urlBase + '/SearchContact.' + extension;
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+
+	try{
+		xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    console.log(jsonObject.error);
+                    return;
+                }
+				console.log(jsonObject)
+				let html = "";
+				const contactsDiv = document.getElementById("allContacts");
+				for(let i = 0; i < jsonObject.results.length; i++){
+					html += '<div class="row hover" onClick="selectRow('+ jsonObject.results[i].ID +')" value="' + jsonObject.results[i].ID +'">';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-name">'+ jsonObject.results[i].name +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-phone">'+ jsonObject.results[i].phone +'</div>';
+					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-email">'+ jsonObject.results[i].email +'</div> </div>';
+				}
+				contactsDiv.innerHTML = html;	
+            }
+        };
+        xhr.send(jsonPayload);
+	}
+	catch(err){
+		console.log(err);
+	}
+}
+
+
+
 let prevNode = null;
 window.onclick = e => {
 	if(!contact) return
@@ -355,7 +411,6 @@ window.onclick = e => {
         }
     }
 } 
-
 
 
 
