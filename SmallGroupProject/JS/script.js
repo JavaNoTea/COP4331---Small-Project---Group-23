@@ -16,6 +16,7 @@ function move2contacts(){
 function move2add(){
     document.getElementById('everything-container').style.transform = "translate(-75%)";
 	document.getElementById('form-label').innerHTML = "ADD NEW CONTACT";
+	document.getElementById("submit-details").onclick = doAddContact;
 	contact = false;
 }
 
@@ -31,6 +32,8 @@ function move2edit(){
 	 let conname = contactss.childNodes[0].innerHTML
 	 let conphone = contactss.childNodes[1].innerHTML
 	 let conemail = contactss.childNodes[2].innerHTML
+
+	 document.getElementById("submit-details").onclick = doEdit;
 
 	 document.getElementById("newName").value = conname;
 	 document.getElementById("newPhone").value = conphone;
@@ -432,7 +435,7 @@ function doEdit(){
 
     let jsonPayload = JSON.stringify(tmp);
 
-	let url = urlBase + '/SearchContact.' + extension;
+	let url = urlBase + '/Edit2.' + extension;
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -441,10 +444,12 @@ function doEdit(){
 	try{
 		xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error) {
                     console.log(jsonObject.error);
                     return;
                 }
+				console.log("edit done")
 				console.log(jsonObject);
             }
         };
