@@ -84,7 +84,7 @@
             
             <div class="text-center-non contacts-container">
                 <div class="d-flex justify-content-between">
-                    <p id="userName" class="text-left userName">Welcome: <span id="name-display"></span></p>
+                    <p id="userName" class="text-center-non userName">WELCOME: <span id="name-display"></span></p>
                     <div class="d-flex mr-2">
                         <p>Search by name:</p>
                         <form onsubmit="searchContact()"  id="search">
@@ -100,10 +100,10 @@
                         <div class="row title"  style="overflow-y: scroll; overflow: hidden;">
                             <div class="col-12" style="height: 100%;" >
                                 <div class="row mb-3 mt-1" >
-                                    <div class="text-center col-3">Name</div>
-                                    <div class="text-center col-3">Phone</div>
-                                    <div class="text-center col-3">Email</div>
-                                    <div class="text-center col-3">Date</div>
+                                    <div class="text-center col-3">NAME</div>
+                                    <div class="text-center col-3">PHONE</div>
+                                    <div class="text-center col-3">EMAIL</div>
+                                    <div class="text-center col-3">DATE</div>
                                 </div>
                                 <div id="allContacts"></div>
                              </div>
@@ -114,16 +114,20 @@
 
                     </div>
                 <div class="row">
-                    <div onclick="doLogout()" class="col-7 text-left mt-3 pointer-hover">
-                        Logout
-                    </div>
-                    <div class="col-5 text-center mt-3">
-                        <div class="d-flex justify-content-between">
-                            <button class="aved-btn" onclick="move2details()">Add</button>
-                            <div>view/Edit</div>
-                            <div>Delete</div>
+                        <div class="d-flex justify-content-between" style="margin-top: 0.5vw;">
+                            <div style="width:40%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="doLogout()" style="float:left; margin-left: 0vw!important;">LOGOUT</button>
+                            </div>
+                            <div style="width:20%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="move2add()" style="margin-left: 5vw!important;">ADD</button>
+                            </div>
+                            <div style="width:20%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="move2edit()" style="margin-left: 5vw!important;">VIEW/EDIT</button>
+                            </div>
+                            <div style="width:20%">
+                                <button class="aved-btn add-buffer-to-button-contact-page" onclick="" style="margin-left: 5vw!important;">DELETE</button>
+                            </div>
                          </div>
-                    </div>
                 </div>
             </div>
         </div>
