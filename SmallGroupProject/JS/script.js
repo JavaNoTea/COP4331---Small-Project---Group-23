@@ -20,20 +20,24 @@ function move2add(){
 }
 
 function move2edit(){
+	contact = false;
     document.getElementById('everything-container').style.transform = "translate(-75%)";
 	document.getElementById('form-label').innerHTML = "EDIT CONTACT";
 
-	conname = document.getElementById(idSelected + '-name').value;
-	conphone = document.getElementById(idSelected + '-phone').value;
-	conemail = document.getElementById(idSelected + '-email').value;
-	condate = document.getElementById(idSelected + '-date').value;
+	let contactss = document.getElementById(idSelected);
 
-	document.getElementById("newName").value = conname;
-	document.getElementById("newPhone").value = conphone;
-	document.getElementById("newEmail").value = conemail;
-	document.getElementById("newDate").value = condate;
 
-	contact = false;
+	console.log(contactss.childNodes[0].innerHTML);
+	 let conname = contactss.childNodes[0].innerHTML
+	 let conphone = contactss.childNodes[1].innerHTML
+	 let conemail = contactss.childNodes[2].innerHTML
+
+	 document.getElementById("newName").value = conname;
+	 document.getElementById("newPhone").value = conphone;
+	 document.getElementById("newEmail").value = conemail;
+	//document.getElementById("newDate").value = condate;
+
+
 }
 
 function grabTodaysDate(){
@@ -319,7 +323,7 @@ function loadContacts(){
 				console.log(contactsDiv);
 				let html = "";
 				for(let i = 0; i < jsonObject.results.length; i++){
-					html += '<div class="row hover" onClick="selectRow('+ jsonObject.results[i].ID +')" value="' + jsonObject.results[i].ID +'">';
+					html += '<div class="row hover" onClick="selectRow('+ jsonObject.results[i].ID +')" id="' + jsonObject.results[i].ID +'">';
 					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-name">'+ jsonObject.results[i].name +'</div>';
 					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-phone">'+ jsonObject.results[i].phone +'</div>';
 					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-email">'+ jsonObject.results[i].email +'</div> </div>';
@@ -411,6 +415,45 @@ window.onclick = e => {
         }
     }
 } 
+
+
+
+function doEdit(){
+	let tmp = {
+        Name: document.getElementById("newName").value,
+        Phone: document.getElementById("newPhone").value,
+		Email: document.getElementById("newEmail").value,
+		ID: idSelected
+
+    };
+
+	console.log("this///")
+	console.log(tmp)
+
+    let jsonPayload = JSON.stringify(tmp);
+
+	let url = urlBase + '/SearchContact.' + extension;
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+
+	try{
+		xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                if (jsonObject.error) {
+                    console.log(jsonObject.error);
+                    return;
+                }
+				console.log(jsonObject);
+            }
+        };
+        xhr.send(jsonPayload);
+	}
+	catch(err){
+		console.log(err);
+	}
+}
 
 
 
