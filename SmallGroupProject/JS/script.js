@@ -449,6 +449,7 @@ function doEdit(){
                     console.log(jsonObject.error);
                     return;
                 }
+				move2contacts();
 				console.log("edit done")
 				console.log(jsonObject);
             }
