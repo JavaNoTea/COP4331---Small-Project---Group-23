@@ -11,6 +11,9 @@ function move2login(){
 function move2contacts(){
     document.getElementById('everything-container').style.transform = "translate(-50%)";
 	contact = true;
+	document.getElementById("newName").value = "";
+	document.getElementById("newPhone").value = "";
+	document.getElementById("newEmail").value = "";
 	loadContacts();
 }
 function move2add(){
@@ -38,20 +41,10 @@ function move2edit(){
 	 document.getElementById("newName").value = conname;
 	 document.getElementById("newPhone").value = conphone;
 	 document.getElementById("newEmail").value = conemail;
-	//document.getElementById("newDate").value = condate;
 
 
 }
 
-function grabTodaysDate(){
-	var today = new Date();
-	var dd = String(today.getDate()).padStart(2, '0');
-	var mm = String(today.getMonth() + 1).padStart(2, '0');
-	var yyyy = today.getFullYear();
-
-	today = mm + '/' + dd + '/' + yyyy;
-	return today;
-}
 
 /*prevents website from refreshing when login is clicked*/
 
@@ -74,7 +67,6 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
-let todaysDate = "";
 let idSelected = 0;
 
 function selectRow(ID){
@@ -90,6 +82,7 @@ function doLogin()
 	let login = document.getElementById("login-username").value;
 	let password = document.getElementById("login-password").value;
 	//var hash = md5( password );
+	
 	
 	document.getElementById("login-result").innerHTML = "";
 
@@ -111,7 +104,7 @@ function doLogin()
 		
 				if( jsonObject.error !== '')
 				{		
-					document.getElementById("login-result").innerHTML = "That user is not in the database. The demogods are displeased...";
+					document.getElementById("login-result").innerHTML = "THAT USER IS NOT IN THE DATABASE. THE DEMO GODS ARE DISPLEASED...";
 					return;
 				}
 				console.log("ID ===== " + jsonObject.id);
@@ -122,6 +115,9 @@ function doLogin()
 
 				saveCookie();
 				document.getElementById("name-display").innerHTML = firstName + " " + lastName;
+				document.getElementById("login-result").innerHTML = "";
+				login = "";
+				password = "";
 				move2contacts();
 			}
 		};
@@ -134,20 +130,44 @@ function doLogin()
 
 }
 
+function hasSpecialChar(field) {
+	var regex = /[^a-zA-Z0-9]/;
+	return regex.test(field);
+  }
 
+  function isValidPhoneNumber(phoneNumber) {
+	const regex = /^\d{3}-\d{3}-\d{4}$/;
+  	return regex.test(phoneNumber);
+  }
+
+  function isValidEmail(email) {
+	const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	return regex.test(email);
+  }
 
 function doSignup()
 {
-	firstName = "";
-	lastName = "";
 
-
-	firstName = document.getElementById("firstName").value;
-	lastName = document.getElementById("lastName").value;
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;
 	let login = document.getElementById("register-username").value;
 	let password = document.getElementById("register-password").value;
 
-
+	if(hasSpecialChar(login)){
+		document.getElementById("register-result").innerHTML = "ERROR: YOU CAN'T HAVE SPECIAL CHARACTERS IN YOUR USERNAME";
+		return;
+	}
+	else if(hasSpecialChar(firstName)){
+		document.getElementById("register-result").innerHTML = "ERROR: YOU'RE NOT ELON'S SON, NO SPECIAL CHARACTERS IN FIRST NAMES";
+		return;
+	}
+	else if(hasSpecialChar(lastName)){
+		document.getElementById("register-result").innerHTML = "ERROR: YOU CAN'T HAVE SPECIAL CHARACTER IN YOUR LAST NAME";
+		return;
+	}
+	else{
+		document.getElementById("register-result").innerHTML = "";
+	}
 
 
 	let tmp = {
@@ -184,6 +204,7 @@ function doSignup()
 				document.getElementById("lastName").value = "";
 				document.getElementById("register-username").value = "";
 				document.getElementById("register-password").value = "";
+
                 
 				saveCookie();
 				move2login();
@@ -260,6 +281,23 @@ function doLogout()
 
 
 function doAddContact(){
+	if(hasSpecialChar(document.getElementById("newName").value)){
+		document.getElementById("add-result").innerHTML = "ERROR: YOU CAN'T HAVE SPECIAL CHARACTERS IN YOUR CONTACT NAMES";
+		return;
+	}
+	else if(!isValidPhoneNumber(document.getElementById("newPhone").value)){
+		document.getElementById("add-result").innerHTML = "ERROR: THAT PHONE NUMBER IS NOT VALID";
+		return;
+	}
+	else if(!isValidEmail(document.getElementById("newEmail").value)){
+		console.log(isValidEmail(document.getElementById("newEmail").value));
+		document.getElementById("add-result").innerHTML = "ERROR: THAT EMAIL IS NOT VALID";
+		return;
+	}
+	else{
+		document.getElementById("add-result").innerHTML = "";
+	}
+
 	let newUser = {
 		Name: document.getElementById("newName").value,
 		Phone: document.getElementById("newPhone").value,
@@ -286,7 +324,6 @@ function doAddContact(){
 				document.getElementById("newName").value = "";
 				document.getElementById("newPhone").value = "";
 				document.getElementById("newEmail").value = "";
-				document.getElementById("newDate").value = "";
 				move2contacts();
             }
         };
@@ -332,10 +369,6 @@ function loadContacts(){
 					html += '<div class="text-center user-info col-3" id="'+ jsonObject.results[i].ID + '-email">'+ jsonObject.results[i].email +'</div> </div>';
 				}
 				contactsDiv.innerHTML = html;
-
-				/*Set todays date as a global variable and set any elements that rely on it*/
-				todaysDate = grabTodaysDate();
-				document.getElementById("newDate").value = todaysDate;
             }
         };
         xhr.send(jsonPayload);
@@ -422,6 +455,22 @@ window.onclick = e => {
 
 
 function doEdit(){
+	if(hasSpecialChar(document.getElementById("newName").value)){
+		document.getElementById("add-result").innerHTML = "ERROR: YOU CAN'T HAVE SPECIAL CHARACTERS IN YOUR CONTACT NAMES";
+		return;
+	}
+	else if(isValidPhoneNumber(document.getElementById("newPhone").value)){
+		document.getElementById("add-result").innerHTML = "ERROR: THAT PHONE NUMBER IS NOT VALID";
+		return;
+	}
+	else if(isValidEmail(document.getElementById("newEmail").value)){
+		document.getElementById("add-result").innerHTML = "ERROR: THAT EMAIL IS NOT VALID";
+		return;
+	}
+	else{
+		document.getElementById("add-result").innerHTML = "";
+	}
+
 	let tmp = {
         Name: document.getElementById("newName").value,
         Phone: document.getElementById("newPhone").value,
