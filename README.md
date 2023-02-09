@@ -40,4 +40,4 @@ Welcome to Demo Gods, an arcade themed contact viewer. This project was develope
 ![contacts](https://user-images.githubusercontent.com/99133333/217911980-52356906-5e29-4da9-81fe-69edf693d5f3.png)
 
 
-Thank you for using demo gods and we hope you enjoy this unique take on a contact viewer. If you have any questions or feedback, please don't hesitate to reach out to any of the team members.
+Thank you for using Demo Gods and we hope you enjoy this unique take on a contact viewer. If you have any questions or feedback, please don't hesitate to reach out to any of the team members.
