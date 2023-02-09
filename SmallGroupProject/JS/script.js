@@ -281,11 +281,7 @@ function doLogout()
 
 
 function doAddContact(){
-	if(hasSpecialChar(document.getElementById("newName").value)){
-		document.getElementById("add-result").innerHTML = "ERROR: YOU CAN'T HAVE SPECIAL CHARACTERS IN YOUR CONTACT NAMES";
-		return;
-	}
-	else if(!isValidPhoneNumber(document.getElementById("newPhone").value)){
+	if(!isValidPhoneNumber(document.getElementById("newPhone").value)){
 		document.getElementById("add-result").innerHTML = "ERROR: THAT PHONE NUMBER IS NOT VALID";
 		return;
 	}
@@ -455,11 +451,7 @@ window.onclick = e => {
 
 
 function doEdit(){
-	if(hasSpecialChar(document.getElementById("newName").value)){
-		document.getElementById("add-result").innerHTML = "ERROR: YOU CAN'T HAVE SPECIAL CHARACTERS IN YOUR CONTACT NAMES";
-		return;
-	}
-	else if(isValidPhoneNumber(document.getElementById("newPhone").value)){
+	if(isValidPhoneNumber(document.getElementById("newPhone").value)){
 		document.getElementById("add-result").innerHTML = "ERROR: THAT PHONE NUMBER IS NOT VALID";
 		return;
 	}
